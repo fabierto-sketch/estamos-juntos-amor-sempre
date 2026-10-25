@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7b284b">
+  <meta name="description" content="Um jogo de casal para rir, conversar, recordar e sonhar juntos — mesmo à distância.">
+  <title>Estamos Juntos, Amor… Sempre ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Página inicial"><span class="brand-heart">♥</span><span>Estamos Juntos,<br><em>Amor… Sempre.</em></span></a>
+    <div class="top-actions"><span id="connection" class="connection"><i></i> A ligar…</span><button id="soundToggle" class="icon-button" title="Alternar efeitos sonoros" aria-label="Alternar efeitos sonoros">♫</button></div>
+  </header>
+  <main class="shell">
+    <section id="welcome" class="view active">
+      <div class="hero">
+        <div class="eyebrow"><span>✦</span> UM JOGO PARA DOIS CORAÇÕES <span>✦</span></div>
+        <h1>Mais perto,<br><span>mesmo à distância.</span></h1>
+        <p class="hero-copy">Perguntas, desafios, memórias e sonhos para descobrirem novas formas de dizer: <strong>estamos juntos, amor… sempre.</strong></p>
+        <div class="hero-tags"><span>♡ Romântico</span><span>✧ Divertido</span><span>∞ À vossa maneira</span></div>
+      </div>
+      <div class="setup-grid">
+        <section class="panel setup-panel">
+          <div class="panel-heading"><span class="step">01</span><div><h2>Preparar a partida</h2><p>Escolhe como querem jogar.</p></div></div>
+          <label for="playerName">O teu nome</label>
+          <input id="playerName" maxlength="24" placeholder="Como te chamam?" autocomplete="nickname">
+          <label for="category">Categoria</label>
+          <select id="category"><option>Todas</option></select>
+          <div class="two-fields">
+            <div><label for="rounds">Número de rondas</label><select id="rounds"><option value="5">5 rondas</option><option value="10" selected>10 rondas</option><option value="15">15 rondas</option><option value="20">20 rondas</option><option value="30">30 rondas</option></select></div>
+            <div><label for="playMode">Modo de jogo</label><select id="playMode"><option value="online">À distância · online</option><option value="local">Juntos · mesmo ecrã</option></select></div>
+          </div>
+          <button id="createRoom" class="primary-button">Criar sala privada <span>↗</span></button>
+          <div class="or-divider"><span></span> ou entra com um código <span></span></div>
+          <label for="roomCode">Código da sala</label>
+          <div class="join-row"><input id="roomCode" maxlength="5" placeholder="EX.: A7K2P" autocomplete="off"><button id="joinRoom" class="secondary-button">Entrar</button></div>
+          <p class="tiny-note">As salas são privadas por código e aceitam dois jogadores.</p>
+        </section>
+        <aside class="panel feature-panel">
+          <div class="sparkle">✧</div><p class="mini-label">FEITO PARA VOCÊS</p><h2>Uma pergunta pode abrir um mundo.</h2>
+          <ul class="feature-list"><li><span>♡</span><div><strong>Perguntas que aproximam</strong><small>Conhecer-se, recordar e sonhar.</small></div></li><li><span>✦</span><div><strong>Desafios para sorrir</strong><small>Pequenas missões românticas.</small></div></li><li><span>∞</span><div><strong>À distância ou lado a lado</strong><small>Joguem como vos souber melhor.</small></div></li></ul>
+          <div class="quote-card">“A distância mede quilómetros.<br>O amor inventa caminhos.” <span>♡</span></div>
+        </aside>
+      </div>
+      <p class="footer-note">Criado com carinho para celebrar o que vos une. <span>♥</span></p>
+    </section>
+
+    <section id="game" class="view">
+      <div class="game-head"><button id="backHome" class="back-button">← Sair da sala</button><div class="room-pill">SALA <strong id="roomCodeDisplay">-----</strong><button id="copyCode" title="Copiar código">⧉</button></div><div id="roundLabel" class="round-pill">RONDA 1 / 10</div></div>
+      <div class="game-layout">
+        <div class="game-main">
+          <div class="panel players-panel"><div class="section-label">A VOSSA EQUIPA</div><div id="players" class="players"></div><div id="lobbyMessage" class="lobby-message">À espera de quem falta… Partilha o código da sala.</div><button id="startGame" class="primary-button" hidden>Começar a jogar <span>♡</span></button></div>
+          <div id="questionPanel" class="panel question-panel" hidden>
+            <div class="question-meta"><span id="categoryLabel" class="category-badge">ROMANCE</span><span id="statusLabel">A TUA VEZ DE RESPONDER</span></div>
+            <div class="question-mark">“</div><h2 id="questionText">A pergunta vai aparecer aqui.</h2>
+            <p id="questionHint" class="question-hint">Não há respostas certas: só a vossa verdade.</p>
+            <form id="answerForm"><label for="answerText">A tua resposta</label><textarea id="answerText" maxlength="1000" rows="4" placeholder="Responde com o coração…" required></textarea><div class="answer-footer"><span id="charCount">0 / 1000</span><button id="submitAnswer" class="primary-button" type="submit">Enviar resposta <span>→</span></button></div></form>
+            <div id="waitingAnswers" class="waiting-box" hidden><span class="pulse-heart">♥</span><div><strong>Resposta guardada!</strong><p>Assim que ambos responderem, podem revelar as respostas.</p></div></div>
+            <div id="revealArea" class="reveal-area" hidden><h3>As vossas respostas</h3><div id="answersList" class="answers-list"></div><div id="scoreControls" class="score-controls"></div><button id="nextRound" class="primary-button">Próxima ronda <span>→</span></button></div>
+            <div id="finishedArea" class="finished-area" hidden><div class="finish-heart">♥</div><h2>O jogo termina. O carinho continua.</h2><p id="winnerText">O mais importante foi partilharem este momento.</p><button id="restartGame" class="primary-button">Jogar outra vez ↻</button></div>
+          </div>
+        </div>
+        <aside class="panel chat-panel"><div class="chat-title"><span class="chat-icon">♡</span><div><h3>Bilhetes de carinho</h3><p>Uma mensagem entre rondas</p></div></div><div id="chatMessages" class="chat-messages"><div class="chat-empty">Deixa aqui uma mensagem bonita. Às vezes, uma frase muda o dia. ♡</div></div><form id="chatForm" class="chat-form"><input id="chatInput" maxlength="300" placeholder="Escreve algo querido…" autocomplete="off"><button aria-label="Enviar mensagem" type="submit">↑</button></form><p class="chat-footnote">Só os jogadores desta sala veem as mensagens.</p></aside>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <footer class="site-footer">Feito para dois corações, onde quer que estejam. <span>♥</span></footer>
+  <script src="/socket.io/socket.io.js"></script><script src="/app.js"></script>
+</body>
+</html>
